@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sangular-deployment
+  labels:
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sangular-deployment  
+  template:
+    metadata:
+      labels:
+        app: sangular-deployment
+    spec:
+      containers:
+        - name: sangular
+          image: kcsacrsupport.azurecr.io/angular-demo:#{tag}#
+          imagePullPolicy: Always
+          name: sangular-deployment
+          ports:
+          - containerPort: 4200
+      imagePullSecrets:
+        - name: kcsacrsupport
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sangular-deployment
+spec:
+  selector:
+    app: sangular-deployment
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 4200
+  type: LoadBalancer
