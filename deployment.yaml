@@ -19,7 +19,7 @@ spec:
           imagePullPolicy: Always
           name: sangular-deployment
           ports:
-          - containerPort: 3000
+          - containerPort: 80
       imagePullSecrets:
         - name: kcsacrsupport
 ---
