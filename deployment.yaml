@@ -19,7 +19,7 @@ spec:
           imagePullPolicy: Always
           name: sangular-deployment
           ports:
-          - containerPort: 4200
+          - containerPort: 3000
       imagePullSecrets:
         - name: kcsacrsupport
 ---
@@ -33,5 +33,5 @@ spec:
   ports:
     - port: 80
       protocol: TCP
-      targetPort: 4200
+      targetPort: 3000
   type: LoadBalancer
